@@ -1,22 +1,260 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+@import url("https://fonts.googleapis.com/css2?family=Agbalumo&family=Open+Sans&display=swap");
 body {
     min-height: 100vh;
-    background-image: url("bg.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    margin: 0;
+    background-color: var(--background);
+    color: var(--text);
+    font-family: "Open Sans", sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+body,
+html {
+    height: 100%;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Agbalumo", sans-serif;
+}
+a {
+    color: var(--primary);
+}
+a:visited {
+    color: var(--primary);
+}
+a:hover {
+    color: var(--accent);
+}
+.body-container {
+    padding: 2rem 1rem;
+    height: 100%;
+}
+.centered {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+button,
+input[type="submit"] {
+    border-radius: var(--border-radius);
+    border: var(--border);
+    padding: 0.75rem 2rem;
+    background-color: var(--primary);
+    transition: var(--transition);
+    color: var(--background);
+}
+button:hover,
+input[type="submit"]:hover {
+    cursor: pointer;
+    box-shadow: var(--hover-shadow);
+    transform: translateY(-2px);
+}
+
+/* @media (prefers-color-scheme: dark) {
+    :root {
+        --text: #ddddf3;
+        --background: #020203;
+        --primary: #1c4278;
+        --secondary: #151a28;
+        --accent: #6073a9;
+    }
+}
+@media (prefers-color-scheme: light) {
+    :root {
+        --text: #0c0c22;
+        --background: #fcfcfd;
+        --primary: #87ade3;
+        --secondary: #d7dcea;
+        --accent: #56699f;
+    }
+} */
+:root {
+    --text: #0c0c22;
+    --background: #fcfcfd;
+    --primary: #87ade3;
+    --secondary: #d7dcea;
+    --accent: #56699f;
+    --border-radius: 0.5rem;
+    --border: 1px solid var(--secondary);
+    --transition: 0.2s ease;
+    --hover-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    --success: #0fb718;
+    --error: #e62618;
+}
+
+.alert-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    /* padding: 1rem 2rem; */
+    border: var(--border);
+    border-radius: var(--border-radius);
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--hover-shadow);
+}
+.alert {
+    padding: 1rem 2rem;
+    width: calc(100% - 4rem);
+    color: white;
+    border-radius: inherit;
+}
+.alert.success {
+    background-color: var(--success);
+}
+.alert.error {
+    background-color: var(--error);
+}
+.alert span {
+    font-weight: bold;
+    font-size: 1.25rem;
+    cursor: pointer;
+    margin-left: auto;
+    float: right;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--background);
+    align-items: center;
+    padding: 0.5rem 1.5rem;
+    border-bottom: var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 99;
+}
+.navbar a {
+    color: var(--text);
+    text-decoration: none;
+}
+.navbar a:hover {
+    color: var(--accent);
+}
+.navbar-menu {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+.dropdown {
+    position: relative;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    border: var(--border);
+    padding: 0.25rem 0.5rem;
+}
+.dropdown::after {
+    display: inline-block;
+    transition: var(--transition);
+    content: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSI3IiB2aWV3Qm94PSIwIDAgMTIgNyIgZmlsbD0ibm9uZSI+PHBhdGggZD0iTTExIDFMNiA2TDEgMSIgc3Ryb2tlPSIjMGMwYzIyIiBzdHJva2Utd2lkdGg9IjEuMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48L3BhdGg+PC9zdmc+");
+}
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+    display: block;
+}
+.dropdown:hover::after,
+.dropdown:focus-within::after {
+    transform: rotate(180deg) translateY(-15%);
+}
+.dropdown-menu {
+    position: absolute;
+    display: none;
+    top: 100%;
+    min-width: max-content;
+    border: var(--border);
+    margin: 0;
+    padding: 0.1rem;
+    background-color: var(--background);
+    border-radius: var(--border-radius);
+}
+.dropdown-menu li {
+    display: flex;
+}
+.dropdown-menu li a {
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    width: 100%;
+}
+.dropdown-menu li a:hover {
+    background-color: var(--primary);
+    color: var(--text);
+}
+.navbar .dropdown-menu {
+    right: 0;
+    text-decoration: none;
+    list-style: none;
+}
+.navbar-burger div {
+    width: 25px;
+    height: 2px;
+    background-color: var(--text);
+    margin: 5px;
+    transition: var(--transition);
+    border-radius: var(--border-radius);
+}
+.navbar-burger {
+    display: none;
+}
+.navbar-burger:hover {
+    cursor: pointer;
+    box-shadow: var(--hover-shadow);
+}
+.navbar-menu-close {
+    display: none;
+}
+@media screen and (max-width: 768px) {
+    .navbar-burger {
+        display: block;
+    }
+    .navbar-menu {
+        position: absolute;
+        right: 0;
+        flex-direction: column;
+        transform: translateX(100%);
+        top: 0;
+        height: 100vh;
+        padding: 4rem 1.5rem 1.5rem 1.5rem;
+        background-color: var(--background);
+        border-left: var(--border);
+        transition: var(--transition);
+    }
+    .navbar-menu.expanded {
+        transform: translateX(0%);
+    }
+    .navbar .dropdown-menu {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .navbar-menu-close {
+        display: block;
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        cursor: pointer;
+        font-size: 2rem;
+        line-height: 1rem;
+        padding: 0.5rem;
+    }
+}
+
+/* form */
+form input:not([type="radio"], [type="checkbox"]) {
+    width: 100%;
+    padding: 0.5rem 0.25rem;
+    border: var(--border);
+    border-radius: var(--border-radius);
+}
+form .field {
+    padding: 0.5rem 0;
+}
+form div.field:last-of-type {
+    margin-bottom: 0.5rem;
 }
