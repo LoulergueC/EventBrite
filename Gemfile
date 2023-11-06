@@ -78,3 +78,5 @@ gem "sentry-rails", "~> 5.12"
 gem "letter_opener", "~> 1.8"
 
 gem "env", "~> 0.3.0"
+
+gem "devise", "~> 4.9"
