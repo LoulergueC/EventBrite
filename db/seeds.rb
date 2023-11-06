@@ -29,3 +29,13 @@ User.create!(
     email: "trehatreuvogra-9697@yopmail.fr",
     encrypted_password: "123456"
 )
+
+Event.create!(
+    title: Faker::Lorem.sentence(word_count: 3),
+    description: Faker::Lorem.sentence(word_count: 20),
+    start_date: Faker::Date.between(from: Date.today, to: Date.today + 10),
+    duration: 30,
+    price: 1,
+    location: "Paris",
+    organizer: User.find(1)
+)

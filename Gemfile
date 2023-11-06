@@ -74,3 +74,7 @@ gem "dockerfile-rails", ">= 1.5", :group => :development
 gem "sentry-ruby", "~> 5.12"
 
 gem "sentry-rails", "~> 5.12"
+
+gem "letter_opener", "~> 1.8"
+
+gem "env", "~> 0.3.0"

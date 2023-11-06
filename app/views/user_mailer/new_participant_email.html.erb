@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Bonne nouvelle <%= @organizer.first_name %> !</h1>
+    <p>
+      C'est confirmé, vous avez un nouveay participant à l'évènement : <b><%= @event.title %></b>.
+    </p>
+    <p>
+      C'est donc avec joie que <%= @participant.first_name %> <%= @participant.last_name %> rejoins votre évènement.
+    </p>
+    <p>
+      Pour rappel, voici les détails de votre évènement :
+      <ul>
+        <li>Lieu : <%= @event.location %></li>
+        <li>Date : <%= @event.start_date %></li>
+        <li>Prix : <%= @event.price %></li>
+        <li>Durée : <%= @event.duration %></li>
+      </ul>
+    </p>
+    <p>
+      Cordialement,
+    </p>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+Bonne nouvelle <%= @organizer.first_name %> !
+---------------------------------------------
+
+C'est confirmé, vous avez un nouveay participant à l'évènement : <%= @event.title %>.
+
+C'est donc avec joie que <%= @participant.first_name %> <%= @participant.last_name %> rejoins votre évènement.
+
+Pour rappel, voici les informations de votre évènements :
+- Lieu : <%= @event.location %>
+- Date : <%= @event.start_date %>
+- Prix : <%= @event.price %>
+- Durée : <%= @event.duration %>

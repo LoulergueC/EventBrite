@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Bonne nouvelle <%= @user.first_name %> !</h1>
+    <p>
+      C'est confirmé, vous allez participer à l'évènement : <b><%= @event.title %></b>.
+    </p>
+    <p>
+      Pour rappel, voici les détails de votre réservation :
+      <ul>
+        <li>Lieu : <%= @event.location %></li>
+        <li>Date : <%= @event.start_date %></li>
+        <li>Prix : <%= @event.price %></li>
+        <li>Durée : <%= @event.duration %></li>
+      </ul>
+    </p>
+  </body>
+</html>
