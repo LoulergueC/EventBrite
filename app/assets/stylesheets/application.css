@@ -10,7 +10,7 @@ body {
 }
 body,
 html {
-    height: 100%;
+    min-height: 100%;
 }
 h1,
 h2,
@@ -30,7 +30,7 @@ a:hover {
     color: var(--accent);
 }
 .body-container {
-    padding: 2rem 1rem;
+    padding: 2rem 5rem;
     height: 100%;
 }
 .centered {
@@ -42,19 +42,29 @@ a:hover {
 }
 
 button,
-input[type="submit"] {
+input[type="submit"],
+.btn {
     border-radius: var(--border-radius);
     border: var(--border);
     padding: 0.75rem 2rem;
     background-color: var(--primary);
     transition: var(--transition);
-    color: var(--background);
+    color: var(--background) !important;
 }
 button:hover,
-input[type="submit"]:hover {
+input[type="submit"]:hover,
+.btn:hover {
     cursor: pointer;
     box-shadow: var(--hover-shadow);
     transform: translateY(-2px);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-danger {
+    color: var(--error) !important;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -78,6 +88,7 @@ input[type="submit"]:hover {
 :root {
     --text: #0c0c22;
     --background: #fcfcfd;
+    --background-secondary: #f5f6f9;
     --primary: #87ade3;
     --secondary: #d7dcea;
     --accent: #56699f;
@@ -246,7 +257,8 @@ input[type="submit"]:hover {
 }
 
 /* form */
-form input:not([type="radio"], [type="checkbox"]) {
+form input:not([type="radio"], [type="checkbox"]),
+form textarea {
     width: 100%;
     padding: 0.5rem 0.25rem;
     border: var(--border);
@@ -257,4 +269,43 @@ form .field {
 }
 form div.field:last-of-type {
     margin-bottom: 0.5rem;
+}
+
+/* Masonry grid */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.grid .grid-item {
+    width: calc(25% - 1rem);
+}
+@media screen and (max-width: 1024px) {
+    .grid .grid-item {
+        width: calc(33% - 1rem);
+    }
+}
+@media screen and (max-width: 768px) {
+    .grid .grid-item {
+        width: calc(50% - 1rem);
+    }
+}
+@media screen and (max-width: 576px) {
+    .grid .grid-item {
+        width: calc(100%);
+    }
+}
+.event {
+    background-color: var(--background-secondary);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+}
+.event img {
+    width: 100%;
+    border-radius: var(--border-radius);
+}
+.event .event-footer {
+    margin: 1rem 0;
+    text-align: center;
+    border-top: var(--border);
 }

@@ -31,7 +31,7 @@
           <ul class="dropdown-menu">
             <% if current_user %>
               <li><%= link_to "Mon profil", user_path(current_user), class: "dropdown-item" %></li>
-              <li><%= link_to "Se deconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item link-danger" %></li>
+              <li><%= button_to "Se deconnecter", destroy_user_session_path, method: :delete, data: {turbo_method: :delete}, class: "dropdown-item text-danger" %></li>
             <% else %>
               <li><%= link_to "Se connecter", new_user_session_path, class: "dropdown-item link-primary" %></li>
               <li><%= link_to "S'inscrire", new_user_registration_path, class: "dropdown-item" %></li>
@@ -42,8 +42,12 @@
     <div class="body-container">
       <% if notice || alert %>
       <div class="alert-container">
+        <% if notice %>
         <div class="alert success"><%= notice %> <span onclick="this.parentElement.parentElement.style.display='none'">&times;</span></div>
+        <% end %>
+        <% if alert %>
         <div class="alert error"><%= alert %><span onclick="this.parentElement.parentElement.style.display='none'">&times;</span></div>
+        <% end %>
       </div>
       <% end %>
 

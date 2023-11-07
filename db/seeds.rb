@@ -30,12 +30,15 @@ User.create!(
     encrypted_password: "123456"
 )
 
-Event.create!(
-    title: Faker::Lorem.sentence(word_count: 3),
-    description: Faker::Lorem.sentence(word_count: 20),
-    start_date: Faker::Date.between(from: Date.today, to: Date.today + 10),
-    duration: 30,
-    price: 1,
-    location: "Paris",
-    organizer: User.find(1)
-)
+10.times do |i|
+    Event.create!(
+        title: Faker::Quote.yoda,
+        description: Faker::Quote.matz,
+        start_date: Faker::Date.between(from: 5.days.ago, to: Date.today + 10),
+        duration: 30,
+        price: rand(1..1000),
+        location: Faker::Address.city,
+        organizer: User.all.sample,
+        picture: "https://loremflickr.com/640/480/abstract"
+    )
+end

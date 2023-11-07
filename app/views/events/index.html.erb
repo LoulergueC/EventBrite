@@ -1,2 +1,23 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<h1 class="text-center">Bienvenue sur EventBriteThp</h1>
+
+<div class="text-center">
+    <%= link_to "Ctéer son évènement", new_event_path, class: "btn" %>
+</div>
+
+<h3>Les prochains évènements :</h3>
+<% if @future_events.any? %>
+    <div class="grid">
+        <%= render :partial => 'event', :collection => @future_events, :as => :event %>
+    </div>
+<% else %>
+    <p>Malheureusement, il n'y a aucun évènement bientôt</p>
+<% end %>
+
+<h3>Les évènements passés :</h3>
+<% if @past_events.any? %>
+    <div class="grid">
+        <%= render :partial => 'event', :collection => @future_events, :as => :event %>
+    </div>
+<% else %>
+    <p>Malheureusement, il n'y a aucun évènement passé</p>
+<% end %>

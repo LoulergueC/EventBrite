@@ -1,0 +1,32 @@
+<div class="centered">
+<h1>Créer un nouvel événement !</h1>
+
+<%= form_for @event do |f| %>
+    <div class="field">
+        <%= f.label :title, "Titre" %>
+        <%= f.text_field :title %>
+    </div>
+    <div class="field">
+        <%= f.label :description, "Description" %>
+        <%= f.text_area :description %>
+    </div>
+    <div class="field">
+        <%= f.label :start_date, "Date" %>
+        <%= f.date_field :start_date %>
+    </div>
+    <div class="field">
+        <%= f.label :duration, "Durée (minutes)" %>
+        <%= f.number_field :duration %>
+    </div>
+    <div class="field">
+        <%= f.label :price, "Prix (euros)" %>
+        <%= f.number_field :price, min: 0, max: 1000 %>
+    </div>
+    <div class="field">
+        <%= f.label :location, "Lieu" %>
+        <%= f.text_field :location %>
+    </div>
+
+    <%= f.submit %>
+<% end %>
+</div>

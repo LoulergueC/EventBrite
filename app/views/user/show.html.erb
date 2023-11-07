@@ -1,0 +1,28 @@
+<div class="centered">
+<h1>Bienvenue sur votre profil !</h1>
+<h4> Voici vos informations : </h4>
+<ul>
+    <li> Nom : <%= @user.last_name %></li>
+    <li> Prénom : <%= @user.first_name %></li>
+    <li> Description : <%= @user.description %></li>
+</ul>
+<%= link_to "Modifier mes informations de profil", edit_user_path(@user), class: "btn" %>
+<br/>
+<br/>
+<br/>
+
+<h4> Informations sensibles :</h4>
+<ul>
+    <li> Email : <%= @user.email %></li>
+    <li> Mot de passe : *************</li>
+</ul>
+<%= link_to "Modifier mes informations sensibles", edit_registration_path(@user), class: "btn" %>
+</div>
+
+<h4> Vos évènements : </h4>
+<%= link_to "Ajouter un évènement", new_event_path, class: "btn" %>
+<% if @events.empty? %>
+    <p>Malheureusement, aucun évènement n'a été créé pour l'instant.</p>
+<% else %>
+    <%= render :partial => "events/event", :collection => @events, :as => :event %>
+<% end %>

@@ -1,0 +1,30 @@
+<div class="grid-item">
+    <div class="event">
+        <div class="event-header">
+            <% if event.picture? %>
+                <img src="<%= event.picture %>" alt="picture of the <%= event.title %> event">
+            <% else %>
+                <img src="<%= asset_path('default.png') %>" alt="default picture of an event">
+            <% end %>
+        </div>
+        <div class="event-body">
+            <h2><%= event.title %></h2>
+            <p><%= event.description %></p>
+            <p><b><%= event.location %></b> - <%= event.duration %> minutes</p>
+            <p><u><%= event.price %> €</u></p>
+            <p class="text-center">Déjà <%= event.participants.count %> participant(s)</p>
+            <div class="text-center">
+                <% if event.organizer == current_user %>
+                    <%= link_to 'Modifier', edit_event_path(event), class: 'btn' %>
+                <% elsif current_page?(event_path(event)) %>
+                    <%= link_to 'Participer à l\'évènement', edit_event_path(event), class: 'btn' %>
+                <% else %>
+                    <%= link_to 'Voir l\'évènement', event, class: 'btn' %>
+                <% end %>
+            </div>
+        </div>
+        <div class="event-footer">
+            <p>Le <%= event.start_date.strftime('%d/%m/%Y') %> à <%= event.start_date.strftime('%H:%M') %></p>
+        </div>
+    </div>
+</div>
