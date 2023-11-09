@@ -51,6 +51,12 @@ input[type="submit"],
     transition: var(--transition);
     color: var(--background) !important;
 }
+button.success,
+input[type="submit"].success,
+.btn.success {
+    background-color: var(--success);
+    color: var(--background) !important;
+}
 button:hover,
 input[type="submit"]:hover,
 .btn:hover {

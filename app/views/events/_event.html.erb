@@ -16,8 +16,10 @@
             <div class="text-center">
                 <% if event.organizer == current_user %>
                     <%= link_to 'Modifier', edit_event_path(event), class: 'btn' %>
+                <% elsif Attendance.where(participant: current_user, event: event).exists? %>
+                    <%= link_to 'Vous participez à l\'évènement', event, class: 'btn success' %>
                 <% elsif current_page?(event_path(event)) %>
-                    <%= link_to 'Participer à l\'évènement', edit_event_path(event), class: 'btn' %>
+                    <%= button_to "Participer à l'évènement", checkout_create_path(price: event.price, event_id: event), class: "btn", data: {turbo: false} %>
                 <% else %>
                     <%= link_to 'Voir l\'évènement', event, class: 'btn' %>
                 <% end %>

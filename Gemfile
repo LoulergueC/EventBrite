@@ -80,3 +80,7 @@ gem "letter_opener", "~> 1.8"
 gem "env", "~> 0.3.0"
 
 gem "devise", "~> 4.9"
+
+gem "stripe", "~> 10.1"
+
+gem 'dotenv-rails'

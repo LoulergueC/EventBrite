@@ -5,38 +5,38 @@ User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     description: Faker::Quote.matz,
-    email: "feummogeyoipou-1513@yopmail.fr",
-    encrypted_password: "123456"
+    email: "event1@yopmail.fr",
+    password: "123456"
 )
 User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     description: Faker::Quote.matz,
-    email: "cosucoddoubrau-2278@yopmail.fr",
-    encrypted_password: "123456"
+    email: "event2@yopmail.fr",
+    password: "123456"
 )
 User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     description: Faker::Quote.matz,
-    email: "quoinnaufroppoucru-2359@yopmail.fr",
-    encrypted_password: "123456"
+    email: "event3@yopmail.fr",
+    password: "123456"
 )
 User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     description: Faker::Quote.matz,
-    email: "trehatreuvogra-9697@yopmail.fr",
-    encrypted_password: "123456"
+    email: "event4@yopmail.fr",
+    password: "123456"
 )
 
 10.times do |i|
     Event.create!(
-        title: Faker::Quote.yoda,
+        title: Faker::Company.bs,
         description: Faker::Quote.matz,
-        start_date: Faker::Date.between(from: 5.days.ago, to: Date.today + 10),
+        start_date: Faker::Date.between(from: Date.today+1, to: Date.today + 20),
         duration: 30,
-        price: rand(1..1000),
+        price: rand(1..200),
         location: Faker::Address.city,
         organizer: User.all.sample,
         picture: "https://loremflickr.com/640/480/abstract"
